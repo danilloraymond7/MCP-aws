@@ -31,6 +31,10 @@ import {
   createEC2ScheduleSchema,
   handleCreateEC2Schedule,
 } from "./tools/create-ec2-schedule.js";
+import {
+  runSSHCommandSchema,
+  handleRunSSHCommand,
+} from "./tools/run-ssh-command.js";
 
 // Inicializar Servidor MCP
 const server = new Server(
@@ -76,6 +80,11 @@ const tools = {
     description: "Cria ou atualiza um agendamento EventBridge Scheduler + Lambda para ligar e desligar uma máquina EC2 no cron especificado.",
     schema: createEC2ScheduleSchema,
     handler: handleCreateEC2Schedule,
+  },
+  run_ssh_command: {
+    description: "Conecta via SSH a uma instância EC2 e executa um comando.",
+    schema: runSSHCommandSchema,
+    handler: handleRunSSHCommand,
   },
 };
 
